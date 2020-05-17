@@ -21,3 +21,9 @@ Route::get('/users', 'Api\UsersListController');
 Route::post('/users', 'Api\UsersCreateController');
 Route::put('/users/{id}', 'Api\UsersUpdateController');
 Route::delete('/users/{id}', 'Api\UsersDeleteController');
+
+// TASKS
+Route::get('/tasks', 'Api\Tasks\TasksListController');
+Route::post('/tasks', 'Api\Tasks\TasksCreateController');
+//Route::put('/users/{id}', 'Api\UsersUpdateController');
+//Route::delete('/users/{id}', 'Api\UsersDeleteController');
