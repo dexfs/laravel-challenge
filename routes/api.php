@@ -25,5 +25,6 @@ Route::delete('/users/{id}', 'Api\UsersDeleteController');
 // TASKS
 Route::get('/tasks', 'Api\Tasks\TasksListController');
 Route::post('/tasks', 'Api\Tasks\TasksCreateController');
-//Route::put('/users/{id}', 'Api\UsersUpdateController');
+Route::put('/tasks/{id}', 'Api\Tasks\TasksUpdateController');
+Route::delete('/tasks/{id}', 'Api\Tasks\TasksDeleteController');
 //Route::delete('/users/{id}', 'Api\UsersDeleteController');
