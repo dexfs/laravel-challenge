@@ -41,4 +41,31 @@ class UserTaskTest extends TestCase
 
         $response->assertCreated();
     }
+    public function testTaskUpdate()
+    {
+        $user = factory(User::class)->create();
+        $task = factory(\App\Task::class)->create([
+            'user_id' => $user->id
+        ]);
+
+        $response = $this->json('PUT', "/api/tasks/$task->id", [
+            'title' => 'Title Updated Task',
+        ]);
+        $response->assertOk();
+        self::assertEquals('Title Updated Task', $task->refresh()->title);
+    }
+
+    public function testTaskDelete()
+    {
+        $user = factory(User::class)->create();
+        $task = factory(\App\Task::class)->create([
+            'user_id' => $user->id
+        ]);
+
+        $response = $this->json('DELETE', "/api/tasks/$task->id");
+        $response->assertOk();
+        self::assertDatabaseMissing('user_tasks', $task->toArray());
+    }
+
+
 }
