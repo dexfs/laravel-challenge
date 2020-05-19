@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Task;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
@@ -65,6 +66,20 @@ class UserTaskTest extends TestCase
         $response = $this->json('DELETE', "/api/tasks/$task->id");
         $response->assertOk();
         self::assertDatabaseMissing('user_tasks', $task->toArray());
+    }
+
+    public function testTaskSaveTotalElapsedTime()
+    {
+        Carbon::setTestNow('2020-05-17 09:30:00');
+        $user = factory(User::class)->create();
+        $task = factory(\App\Task::class)->create([
+            'user_id' => $user->id,
+            'started_at' => Carbon::now(),
+            'finished_at'=> Carbon::now()->addDays(1)->setSeconds(22)->addHours(8)
+        ]);
+        $response = $this->json('POST', '/api/tasks', $task->toArray());
+        $response->assertCreated();
+        self::assertEquals('32:00:22', $response->decodeResponseJson('data')['total_elapsed_time']);
     }
 
 
