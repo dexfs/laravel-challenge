@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Tasks;
 
+use App\Services\TaskServiceCreate;
 use App\Task;
 use Illuminate\Http\Request;
 use App\User;
@@ -11,16 +12,25 @@ use Illuminate\Support\Facades\Hash;
 
 class TasksCreateController extends Controller
 {
+    /**
+     * @var \App\Services\TaskServiceCreate
+     */
+    private $taskServiceCreate;
+
+    public function __construct(TaskServiceCreate $taskServiceCreate)
+    {
+        $this->taskServiceCreate = $taskServiceCreate;
+    }
 
     public function __invoke(Request $request)
     {
         $data = $request->all();
         $this->validator($data)->validate();
 
-        Task::create($data);
+        $task = $this->taskServiceCreate->__invoke($data);
 
         return $request->wantsJson()
-            ? response('', 201)
+            ? response()->json(['data' => $task], 201)
             : response('', 400);
     }
 

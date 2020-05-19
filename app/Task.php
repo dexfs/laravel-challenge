@@ -14,7 +14,8 @@ class Task extends Model
         'status',
         'started_at',
         'finished_at',
-        'user_id'
+        'user_id',
+        'total_elapsed_time'
     ];
 
     protected $casts = [
