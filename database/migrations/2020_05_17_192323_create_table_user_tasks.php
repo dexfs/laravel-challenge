@@ -18,8 +18,9 @@ class CreateTableUserTasks extends Migration
             $table->string('title');
             $table->text('description');
             $table->enum('status', ['nova', 'em_andamento','em_testes', 'finalizada']);
-            $table->dateTime('started_at');
-            $table->dateTime('finished_at');
+            $table->dateTime('started_at')->nullable();
+            $table->dateTime('finished_at')->nullable();
+            $table->time('total_elapsed_time')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });
