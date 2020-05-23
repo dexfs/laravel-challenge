@@ -59,6 +59,6 @@ class Task extends Model
             ->select(\DB::raw("count(id) as total"), 'user_id')
             ->whereMonth('started_at', '=', $month)
             ->whereMonth('finished_at', '=', $month)
-            ->groupBy('status');
+            ->groupBy('status', 'user_id');
     }
 }
