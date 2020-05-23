@@ -15,13 +15,18 @@ class Task extends Model
         'started_at',
         'finished_at',
         'user_id',
-        'total_elapsed_time'
+        'total_elapsed_time',
     ];
 
     protected $casts = [
-        'started_at' => 'timestamp',
+        'started_at'  => 'timestamp',
         'finished_at' => 'timestamp',
     ];
+
+    public function getStatusAttribute($value)
+    {
+        return ucwords(str_replace('_', ' ', $value));
+    }
 
     public function user()
     {
@@ -32,6 +37,7 @@ class Task extends Model
      * Scope a query to only include popular users.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
 
