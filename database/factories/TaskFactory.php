@@ -19,3 +19,16 @@ $factory->define(\App\Task::class, function (Faker $faker) {
         }
     ];
 });
+
+$factory->state(\App\Task::class, 'nova', [
+    'status' => 'nova'
+]);
+$factory->state(\App\Task::class, 'em_andamento', [
+    'status' => 'em_andamento'
+]);
+$factory->state(\App\Task::class, 'em_testes', [
+    'status' => 'em_testes'
+]);
+$factory->state(\App\Task::class, 'finalizada', [
+    'status' => 'finalizada'
+]);
