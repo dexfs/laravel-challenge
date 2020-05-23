@@ -35,7 +35,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                        @if (Route::has('users'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('users') }}">{{ __('Usuários') }}</a>
+                            </li>
+                        @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
