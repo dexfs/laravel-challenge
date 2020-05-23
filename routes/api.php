@@ -27,4 +27,10 @@ Route::get('/tasks', 'Api\Tasks\TasksListController');
 Route::post('/tasks', 'Api\Tasks\TasksCreateController');
 Route::put('/tasks/{id}', 'Api\Tasks\TasksUpdateController');
 Route::delete('/tasks/{id}', 'Api\Tasks\TasksDeleteController');
-//Route::delete('/users/{id}', 'Api\UsersDeleteController');
+
+// DASHBOARD
+Route::get('/dashboard/tasks/status', 'Api\Dashboard\DashboardStatusController');
+Route::get('/dashboard/tasks/users', 'Api\Dashboard\DashboardUsersController');
+
+
+
