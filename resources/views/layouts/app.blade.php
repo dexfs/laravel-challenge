@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'laravel') }}
+                    {{ config('app.name', 'la') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,6 +39,11 @@
                         @if (Route::has('users'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users') }}">{{ __('Usuários') }}</a>
+                            </li>
+                        @endif
+                        @if (Route::has('tasks'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('tasks') }}">{{ __('Tarefas') }}</a>
                             </li>
                         @endif
                         @endauth
