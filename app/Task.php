@@ -19,14 +19,9 @@ class Task extends Model
     ];
 
     protected $casts = [
-        'started_at'  => 'timestamp',
-        'finished_at' => 'timestamp',
+        'started_at'  => 'datetime',
+        'finished_at' => 'datetime',
     ];
-
-    public function getStatusAttribute($value)
-    {
-        return ucwords(str_replace('_', ' ', $value));
-    }
 
     public function user()
     {
@@ -65,6 +60,6 @@ class Task extends Model
             ->select(\DB::raw("count(id) as total"), 'user_id')
             ->whereMonth('started_at', '=', $month)
             ->whereMonth('finished_at', '=', $month)
-            ->groupBy('status', 'user_id');
+            ->groupBy('user_id');
     }
 }
