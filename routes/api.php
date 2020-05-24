@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 Route::get('/users', 'Api\UsersListController');
+Route::get('/users/pluck', 'Api\UsersPluckController');
 Route::post('/users', 'Api\UsersCreateController');
 Route::put('/users/{id}', 'Api\UsersUpdateController');
 Route::delete('/users/{id}', 'Api\UsersDeleteController');
@@ -25,6 +26,7 @@ Route::delete('/users/{id}', 'Api\UsersDeleteController');
 // TASKS
 Route::get('/tasks', 'Api\Tasks\TasksListController');
 Route::post('/tasks', 'Api\Tasks\TasksCreateController');
+Route::get('/tasks/statuses', 'Api\Tasks\TasksStatusController');
 Route::put('/tasks/{id}', 'Api\Tasks\TasksUpdateController');
 Route::delete('/tasks/{id}', 'Api\Tasks\TasksDeleteController');
 
