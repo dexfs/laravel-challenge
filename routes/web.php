@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::redirect('/', '/login', 301);
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::middleware('auth')->get('/users', 'Users\IndexController@index')->name('users');
