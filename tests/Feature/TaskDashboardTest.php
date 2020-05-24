@@ -87,7 +87,8 @@ class TaskDashboardTest extends TestCase
             ]
         );
         $result = $response->decodeResponseJson();
-        self::assertEquals('4', $result['data'][0]['total']);
-        self::assertEquals('1', $result['data'][1]['total']);
+
+        self::assertEquals('1', $result['data'][0]['total']);
+        self::assertEquals('4', $result['data'][1]['total']);
     }
 }
