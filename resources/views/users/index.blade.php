@@ -37,21 +37,8 @@
                 load: function () {
                     return sendRequest(`/api/users`)
                 },
-                insert: function (values) {
-                    return sendRequest("/api/users", "POST", {
-                        values: JSON.stringify(values)
-                    });
-                },
-                update: function (key, values) {
-                    return sendRequest("/api/users", "PUT", {
-                        key: key,
-                        values: JSON.stringify(values)
-                    });
-                },
                 remove: function (key) {
-                    return sendRequest("/api/users", "DELETE", {
-                        key: key
-                    });
+                    return sendRequest(`/api/users/${key}`, "DELETE");
                 }
             })
             var dataGrid = $("#gridUsers").dxDataGrid({
