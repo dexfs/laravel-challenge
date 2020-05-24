@@ -18,3 +18,4 @@ Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::middleware('auth')->get('/users', 'Users\IndexController@index')->name('users');
+Route::middleware('auth')->get('/tasks', 'Tasks\IndexController@index')->name('tasks');
