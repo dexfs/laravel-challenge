@@ -1,5 +1,7 @@
 # Desafio DotSet
 
+[Video execução do projeto](https://www.loom.com/share/a325ec4c447e4e56a29f15aecbeea945) 
+
 ## Link das tarefas do projeto
 
 [Projeto Start](https://docs.google.com/spreadsheets/d/1piYemiZ3ssumbXGA_VN-M96tea6nY7lRmH_oyySDfLw/edit#gid=885023806)
