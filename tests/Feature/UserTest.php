@@ -73,7 +73,14 @@ class UserTest extends TestCase
 
     public function testUserDelete()
     {
-        $user = factory(\App\User::class)->create();
+        $user = factory(\App\User::class, 1)->create()
+            ->each(function ($user){
+                $tasks = factory(\App\Task::class, 2)->state('finalizada')->make([
+                    'user_id' => $user->id,
+                ]);
+                $user->tasks()->saveMany($tasks);
+            })->first();
+
         $response = $this->withHeaders(
             ['Accept' => 'application/json']
         )->json('DELETE', "/api/users/$user->id");
