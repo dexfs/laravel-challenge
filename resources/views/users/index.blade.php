@@ -60,8 +60,13 @@
                 showBorders: true,
                 editing: {
                     refreshMode: "reshape",
-                    mode: "cell",
-                    allowAdding: true,
+                    mode: "form",
+                    form: {
+                        colCount: 2,
+                        items: ['name', 'email' ]
+                    },
+
+                    allowAdding: false,
                     allowUpdating: true,
                     allowDeleting: true
                 },
@@ -76,12 +81,15 @@
                 columns: [{
                     dataField: "id",
                     caption: "ID",
+                    visible: false
                 }, {
                     dataField: "name",
-                    caption: "Name"
+                    caption: "Name",
+                    validationRules: [{type: 'required'}],
                 }, {
                     dataField: "email",
-                    dataType: "email"
+                    dataType: "email",
+                    validationRules: [{type: 'required'}, {type:'email'}],
                 }
                 ],
             }).dxDataGrid("instance");
