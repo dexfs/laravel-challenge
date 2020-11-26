@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Task;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserServiceDelete
 {
@@ -28,6 +29,9 @@ class UserServiceDelete
     {
         try {
             $user = $this->user->with('tasks')->where('id', $id)->first();
+            if (!$user) {
+                throw new ModelNotFoundException('Usuário não encontrado');
+            }
             $user->tasks()->delete();
             $user->delete();
         }

@@ -85,7 +85,7 @@ class UserTest extends TestCase
             ['Accept' => 'application/json']
         )->json('DELETE', "/api/users/$user->id");
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
     }
 
     public function testUserDeleteFail()

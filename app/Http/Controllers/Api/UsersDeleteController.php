@@ -25,7 +25,7 @@ class UsersDeleteController extends Controller
         $this->serviceDelete->__invoke($id);
 
         return request()->wantsJson()
-            ? response('', 200)
+            ? response('', 204)
             : response('', 400);
 
     }
