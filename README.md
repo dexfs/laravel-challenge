@@ -68,3 +68,10 @@ senha: 123456
 email: a@a.com
 senha: password
 ```
+
+## Para rodar os testes
+
+```
+$ cp .env.test.example .env.test
+$ php artisan test
+```
