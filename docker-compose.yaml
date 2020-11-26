@@ -13,6 +13,18 @@ services:
       - POSTGRES_USER=sandbox
     networks:
       - dotse-network
+  database_test:
+    image: postgres:10.3
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_PASSWORD=sandbox
+      - POSTGRES_DB=sandbox_test
+      - POSTGRES_USER=sandbox
+    networks:
+      - dotse-network
 
 networks:
   dotse-network: {}
