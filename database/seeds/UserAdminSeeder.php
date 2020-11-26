@@ -12,8 +12,8 @@ class UserAdminSeeder extends Seeder
     public function run()
     {
         factory(\App\User::class)->create([
-            'name' => 'Admin DotSe',
-            'email' => 'admin@dotse.com',
+            'name' => 'Admin User',
+            'email' => 'admin@user.com',
             'password' => \Illuminate\Support\Facades\Hash::make('123456')
         ]);
     }
